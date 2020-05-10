@@ -1,0 +1,58 @@
+{% extends 'blog/base.html'  %}
+
+
+{% block content %}
+
+<div class="container-fluid">
+
+  <div id="table-wrapper">
+    <form class="" action="/netcdf" method="post">
+      {% csrf_token %}
+      <div class=table-header-submit>
+        <h4> GRIB file <strong>{{ grbs.filename }}</strong>, valid <strong>{{ grbs.validDate }}</strong> (t + <strong>{{ grbs.forecastTime }}</strong>)</h4>
+        <button type="submit" class="btn btn-primary" style="height: 50%;" name="netcdf">Create NetCDF file</button>
+      </div>
+      <div class="grib-card grib-card-header">
+        <input type="checkbox" id="toggler" name="" value="" checked>
+        <div> Parameter </div>
+        <div> Units </div>
+        <div> Level </div>
+        <div> Type of Level </div>
+        <div> Id </div>
+      </div>
+      <hr style="border-color: grey">
+      <div class="grib-table">
+        {% for grb in grbs.all %}
+          <div class="grib-card">
+            <input type="checkbox" class="check"  id="grb-id-{{ grb.id }}" name="{{ grb.id }}" checked>
+            <div> {{ grb.name }} </div>
+            <div> {{ grb.units|safe }}  </div>
+            <div> {{ grb.level }} </div>
+            <div> {{ grb.typeOfLevel }}  </div>
+            <div> {{ grb.id }}  </div>
+          </div>
+        {% endfor %}
+        </div>
+    </form>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  const boxes = document.getElementsByClassName('check')
+  const gribCard = document.getElementsByClassName('grib-card')
+  document.getElementById('toggler').addEventListener('click', e => {
+    Array.from(boxes).forEach(box => {
+      box.checked = e.target.checked
+    })
+  })
+
+  // Array.from(gribCard).forEach(card => {
+  //   card.addEventListener('click', e => {
+  //     card.classList.add("active")
+  //   })
+  // })
+
+</script>
+
+{% endblock %}

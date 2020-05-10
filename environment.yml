@@ -1,0 +1,14 @@
+name: djangrib
+
+channels:
+  - conda-forge
+
+dependencies:
+  - django
+  - gunicorn
+  - netCDF4
+  - pygrib
+  - pip:
+    - psycopg2
+    - django-widget-tweaks
+    - first

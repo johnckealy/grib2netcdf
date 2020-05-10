@@ -1,0 +1,23 @@
+{% extends 'blog/base.html'  %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+
+  <div class="container">
+
+    <h2 style="text-align: center;">Grib2 to NetCDF file converter</h2>
+    <div class="fileuploader">
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">
+          <i class="fa fa-upload"></i> Upload
+        </button>
+      </form>
+    </div>
+
+    <a style="text-align: right;" href="/grib">Want to see a sample gribfile's output?</a>
+  </div>
+
+{% endblock %}
