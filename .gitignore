@@ -5,7 +5,7 @@ staticfiles
 .production_env
 db.sqlite3
 getting-started/*
-static/
+config/static/
 
 
 *.egg-info
