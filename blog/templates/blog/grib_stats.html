@@ -22,6 +22,9 @@
       </div>
       <hr style="border-color: grey">
       <div class="grib-table">
+        {% if grbserror %}
+          <h4> {{ grbserror }}</h4>
+        {% endif %}
         {% for grb in grbs.all %}
           <div class="grib-card">
             <input type="checkbox" class="check"  id="grb-id-{{ grb.id }}" name="{{ grb.id }}" checked>

@@ -11,6 +11,7 @@ def handle_input_file(f):
     with open(filepath, 'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
+    return Grib(filepath)
 
 
 def upload_file(request):
@@ -18,10 +19,10 @@ def upload_file(request):
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
             try:
-                grb = handle_input_file(request.FILES['file'])
-                return render(request, 'blog/grib_stats.html', {'grb': grb})
+                grbs = handle_input_file(request.FILES['file'])
+                return render(request, 'blog/grib_stats.html', {'grbs': grbs})
             except:
-                return render(request, 'blog/grib_stats.html', {'grb': "There was a problem with your file. Are you sure it's in GRIB2 format?"})
+                return render(request, 'blog/grib_stats.html', {'grbserror': "There was a problem with your file. Are you sure it's in GRIB2 format?"})
     else:
         form = UploadFileForm()
     return render(request, 'blog/index.html', {'form': form})
