@@ -4,6 +4,7 @@ from . import views
 app_name = 'blog'
 urlpatterns = [
     path('', views.upload_file, name='upload'),
-    path('grib', views.grib_stats, name='grib'),
+    path('sample_grib', views.sample_grib, name='sample_grib'),
+    path('grib', views.grib, name='grib'),
     path('netcdf', views.create_netcdf, name='netcdf'),
 ]

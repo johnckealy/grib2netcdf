@@ -6,34 +6,38 @@ import os
 from django.conf import settings
 
 
+FILEPATH = os.getenv('TMP_LOCATION') + 'destination.grb'
+SAMPLE_FILEPATH = os.path.join(settings.BASE_DIR, '../GribFile')
+
 def handle_input_file(f):
-    filepath = os.getenv('TMP_LOCATION') + 'destination.grb'
-    with open(filepath, 'wb+') as destination:
+    with open(FILEPATH, 'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
-    return Grib(filepath)
-
 
 def upload_file(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            try:
-                grbs = handle_input_file(request.FILES['file'])
-                return render(request, 'blog/grib_stats.html', {'grbs': grbs})
-            except:
-                return render(request, 'blog/grib_stats.html', {'grbserror': "There was a problem with your file. Are you sure it's in GRIB2 format?"})
+            handle_input_file(request.FILES['file'])
+            return redirect('/grib')
         else:
             return render(request, 'blog/grib_stats.html', {'grbserror': "There was a problem validating your file."})
-
     else:
         form = UploadFileForm()
     return render(request, 'blog/index.html', {'form': form})
 
 
-def grib_stats(request):
-    sample_grb = Grib(os.path.join(settings.BASE_DIR, '../GribFile'))
-    return render(request, 'blog/grib_stats.html', {'grbs': sample_grb})
+def grib(request):
+    try:
+        grbs = Grib(FILEPATH)
+        return render(request, 'blog/grib_stats.html', {'grbs': grbs})
+    except:
+        return render(request, 'blog/grib_stats.html', {'grbserror': "There was a problem with your file. Are you sure it's in GRIB2 format?"})
+
+
+def sample_grib(request):
+    sample_grbs = Grib(SAMPLE_FILEPATH)
+    return render(request, 'blog/grib_stats.html', {'grbs': sample_grbs})
 
 
 def create_netcdf(request):
