@@ -112,4 +112,4 @@ db.sqlite3
 deleteme.py
 deleteme.txt
 GribFile
-tmp/destination.grb
+tmp/*

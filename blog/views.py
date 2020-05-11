@@ -1,16 +1,18 @@
 from django.shortcuts import render, redirect#, get_object_or_404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, FileResponse
+from django.core.files.storage import FileSystemStorage
 from .forms import  UploadFileForm
-from .grib import Grib
+from .grib import Grib, NetCDF
 import os
 from django.conf import settings
 
 
-FILEPATH = os.getenv('TMP_LOCATION') + 'destination.grb'
-SAMPLE_FILEPATH = os.path.join(settings.BASE_DIR, '../GribFile')
+
+TMP_DIR = os.getenv('TMP_LOCATION')
+SAMPLE_FILE = os.path.join(settings.BASE_DIR, '../GribFile')
 
 def handle_input_file(f):
-    with open(FILEPATH, 'wb+') as destination:
+    with open(TMP_DIR+'destination.grb', 'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
 
@@ -29,17 +31,21 @@ def upload_file(request):
 
 def grib(request):
     try:
-        grbs = Grib(FILEPATH)
-        return render(request, 'blog/grib_stats.html', {'grbs': grbs})
+        grbs = Grib(TMP_DIR+'destination.grb')
+        return render(request, 'blog/grib_stats.html', {'grbs': grbs, 'sample': False})
     except:
         return render(request, 'blog/grib_stats.html', {'grbserror': "There was a problem with your file. Are you sure it's in GRIB2 format?"})
 
 
 def sample_grib(request):
-    sample_grbs = Grib(SAMPLE_FILEPATH)
-    return render(request, 'blog/grib_stats.html', {'grbs': sample_grbs})
+    sample_grbs = Grib(SAMPLE_FILE)
+    return render(request, 'blog/grib_stats.html', {'grbs': sample_grbs, 'sample': True})
 
 
 def create_netcdf(request):
     if request.method == 'POST':
-        return render(request, 'blog/netcdf_success.html', {'posted': request.POST})
+        NetCDF(request.POST)
+
+    redirect('/download_netcdf')    
+
+    render(request, 'blog/netcdf_success.html', {'netcdf_filepath': netcdf_filepath})

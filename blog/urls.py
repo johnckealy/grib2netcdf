@@ -7,4 +7,5 @@ urlpatterns = [
     path('sample_grib', views.sample_grib, name='sample_grib'),
     path('grib', views.grib, name='grib'),
     path('netcdf', views.create_netcdf, name='netcdf'),
+    path('download_netcdf', views.download_netcdf, name='download_netcdf'),
 ]
