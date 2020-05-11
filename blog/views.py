@@ -23,6 +23,9 @@ def upload_file(request):
                 return render(request, 'blog/grib_stats.html', {'grbs': grbs})
             except:
                 return render(request, 'blog/grib_stats.html', {'grbserror': "There was a problem with your file. Are you sure it's in GRIB2 format?"})
+        else:
+            return render(request, 'blog/grib_stats.html', {'grbserror': "There was a problem validating your file."})
+
     else:
         form = UploadFileForm()
     return render(request, 'blog/index.html', {'form': form})
