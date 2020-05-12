@@ -13,7 +13,7 @@
         <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#gribstatsModal" style="height: 50%;" name="netcdf">Create NetCDF file</button>
       </div>
       <div class="grib-card grib-card-header">
-        <input type="checkbox" id="toggler" name="" value="" checked>
+        <input type="checkbox" id="toggler" name="" value="" unchecked>
         <div> Parameter </div>
         <div> Units </div>
         <div> Level </div>
@@ -26,7 +26,7 @@
         {% endif %}
         {% for grb in grbs.all %}
           <div class="grib-card">
-            <input type="checkbox" class="check"  id="grb-id-{{ grb.id }}" name="{{ grb.id }}" checked>
+            <input type="checkbox" class="check"  id="grb-id-{{ grb.id }}" name="{{ grb.id }}" unchecked>
             <div> {{ grb.name }} </div>
             <div> {{ grb.units|safe }} </div>
             <div> {{ grb.level }} </div>

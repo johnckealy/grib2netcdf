@@ -8,11 +8,20 @@
     <h1 class="align-self-center">Grib2netCDF</h1>
     <img id="temperature-img" src="{% static 'blog/images/temperature.jpg' %}" alt="">
   </div>
-  <p>Grib2netCDF is a simple tool used to convert grib files to netCDF format. It's completely free to use. GRIB (<em>GRIdded Binary</em> or <em>General Regularly-distributed Information in Binary form</em>) is a file format commonly used for meteorological data, and is a World Meteorological Organization (WMO) standard. Simply drag and drop a GRIB2 format file, and click <span class="text-btn text-btn-grn" ><i class="fa fa-upload"></i> Upload</span>. </p>
-  <p>You can select your desired fields by ticking or unticking the checkboxes. When you're happy, click <span class="text-btn text-btn-blue">Create NetCDF file</span>. Do bear in mind that netCDF files are inherent larger than GRIB, so the download may take time.</p>
-  <p>You can also see a sample grib, which is taken from NOAA's NOMADs system. </p>
-  <p>That's it! It's a simple tool, and intended to simplify the fields coming from the grib to make for easier access. That said, it is not fully comprehensive, and some of the fields in the GRIB file will not appear in the NetCDF. That's on purpose, the idea is to separate out the most useful fields. For more detailed w</p>
-  <p>Grib2netCDF was built and is maintained by John C. Kealy, a doctoral student of meteorology at the University of Exeter. Please send me an <a href="mailto:j.kealy@exeter.ac.uk">email</a> with an comments, questions, or feature requests.   </p>
+  <p>
+    Grib2netCDF is a simple tool developed to convert GRIB files to netCDF format. It's completely free to use. GRIB (<em>GRIdded Binary</em> or <em>General Regularly-distributed Information in Binary form</em>) is a file format commonly used for meteorological data, and is a World Meteorological Organization (WMO) standard. Simply drag and drop a GRIB2 format file, and click <span class="text-btn text-btn-grn" ><i class="fa fa-upload"></i> Upload</span>.
+  </p>
+  <p>
+    You can select your desired fields by ticking or unticking the checkboxes. When you're happy, click <span class="text-btn text-btn-blue">Create NetCDF file</span>. Do bear in mind that netCDF files are inherently larger than GRIB, so try to select as few fields as possible from the checkbox lists; this will help our servers to keep up. If the sites does crash (you'll get a Bad Gateway 502 error), don't worry about it, just try again with less fields selected. You can always break your requirements into multile netCDF files.
+    We've also provided a sample GRIB2 file, taken from NOAA's NOMADs system, so you can try the tool out. You can select this file by clicking 'See a Sample' in the navbar.
+  </p>
+  <p>
+    That's it! It's a simple tool, intended to simplify the fields coming from the GRIB, allowing easier access to the data. That said, it is not fully comprehensive, and some of the fields in the GRIB file will not appear in the NetCDF. That's on purpose, the idea being to separate out the most useful fields.
+  </p>
+  <p>
+    Grib2netCDF was built and is maintained by John C. Kealy, a doctoral student of meteorology at the University of Exeter. Please send me an <a href="mailto:j.kealy@exeter.ac.uk">email</a> with any comments, questions, or feature requests.
+  </p>
+  <p>Happy Gribbing. </p>
 </div>
 
 <div class="footer">
