@@ -7,8 +7,8 @@ import os
 from django.conf import settings
 from first import first
 
-TMP_DIR = os.path.join(settings.BASE_DIR, '../tmp/')
-SAMPLE_FILEPATH = os.path.join(settings.BASE_DIR, '../GribFile')
+TMP_DIR = os.getenv('TMP_LOCATION')
+SAMPLE_FILE = os.path.join(settings.BASE_DIR, '../GribFile')
 
 
 class GribField:
@@ -51,6 +51,7 @@ class Grib:
         self.filename = self.get_filename(filepath)
         self.grbs_obj = pygrib.open(filepath)
         self.validDate = first(self.grbs_obj).validDate
+        self.strvalidDate = self.validDate.strftime("%Y-%m-%d %H:%M:%S")
         self.forecastTime = first(self.grbs_obj).forecastTime
         self.all = []
         self.parse_grib(self.grbs_obj)
@@ -88,7 +89,7 @@ class NetCDF:
 
     def read_grib(self):
         if self.post_object['sample'] == 'True':
-            return Grib(SAMPLE_FILEPATH)
+            return Grib(SAMPLE_FILE)
         else:
             return Grib(TMP_DIR + 'destination.grb')
 

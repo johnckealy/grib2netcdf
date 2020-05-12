@@ -9,7 +9,7 @@
       {% csrf_token %}
       <input type="hidden" name="sample" value="{{ sample }}">
       <div class=table-header-submit>
-        <h4> GRIB file <strong>{{ grbs.filename }}</strong>, valid <strong>{{ grbs.validDate }}</strong> (t + <strong>{{ grbs.forecastTime }}</strong>)</h4>
+        <h4> GRIB file <strong>{{ grbs.filename }}</strong>, valid <strong>{{ grbs.strvalidDate }}</strong> (t + <strong>{{ grbs.forecastTime }}</strong>)</h4>
         <button type="submit" class="btn btn-primary" style="height: 50%;" name="netcdf">Create NetCDF file</button>
       </div>
       <div class="grib-card grib-card-header">
@@ -18,7 +18,6 @@
         <div> Units </div>
         <div> Level </div>
         <div> Type of Level </div>
-        <div> Id </div>
       </div>
       <hr style="border-color: grey">
       <div class="grib-table">

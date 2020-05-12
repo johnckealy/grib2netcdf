@@ -2,19 +2,18 @@ from django.shortcuts import render, redirect#, get_object_or_404
 from django.http import HttpResponseRedirect, FileResponse
 from django.core.files.storage import FileSystemStorage
 from .forms import  UploadFileForm
-from .grib import Grib, NetCDF
+from .grib import Grib, NetCDF, TMP_DIR, SAMPLE_FILE
 import os
 from django.conf import settings
 
 
 
-TMP_DIR = os.getenv('TMP_LOCATION')
-SAMPLE_FILE = os.path.join(settings.BASE_DIR, '../GribFile')
 
 def handle_input_file(f):
     with open(TMP_DIR+'destination.grb', 'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
+
 
 def upload_file(request):
     if request.method == 'POST':
@@ -45,7 +44,7 @@ def sample_grib(request):
 def create_netcdf(request):
     if request.method == 'POST':
         NetCDF(request.POST)
+    fs = FileSystemStorage(TMP_DIR)
+    response = FileResponse(fs.open('output.nc', 'rb'))
 
-    redirect('/download_netcdf')    
-
-    render(request, 'blog/netcdf_success.html', {'netcdf_filepath': netcdf_filepath})
+    return response
