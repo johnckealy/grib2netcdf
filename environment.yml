@@ -15,4 +15,3 @@ dependencies:
     - first
     - selenium
     - python-dotenv
-    - django-favicon
