@@ -4,11 +4,17 @@ from first import first
 import re
 import netCDF4 as nc4
 import os
+import string
+import random
 from django.conf import settings
 from first import first
 
 TMP_DIR = os.getenv('TMP_LOCATION')
 SAMPLE_FILE = os.path.join(settings.BASE_DIR, '../GribFile')
+
+
+
+
 
 
 class GribField:
@@ -87,11 +93,15 @@ class NetCDF:
         self.validDate = first(self.grbs_obj.all).get_timestamps()[1]
         self.create_netcdf()
 
+    def _id_generator(self, size=9, chars=string.ascii_uppercase + string.digits):
+        return ''.join(random.choice(chars) for _ in range(size))
+
     def read_grib(self):
         if self.post_object['sample'] == 'True':
             return Grib(SAMPLE_FILE)
         else:
-            return Grib(TMP_DIR + 'destination.grb')
+            print('generated id ############################   ', self._id_generator())
+            return Grib(TMP_DIR + 'destination{}.grb'.format(self._id_generator()))
 
     def create_netcdf(self):
         f = nc4.Dataset(TMP_DIR + 'output.nc', 'w', format='NETCDF4')

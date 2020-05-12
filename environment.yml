@@ -8,8 +8,11 @@ dependencies:
   - gunicorn
   - netCDF4
   - pygrib
+  - pip
   - pip:
     - psycopg2
     - django-widget-tweaks
     - first
     - selenium
+    - python-dotenv
+    - django-favicon

@@ -1,15 +1,34 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Convert Grib to NetCDF</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Convert GRIB to netCDF meteorological data formats using this simple tool. All conversions are completely free of charge.">
+    <meta name="author" content="John C. Kealy">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Convert GRIB to NetCDF | a free online conversion tool">
+    <meta property="og:description" content="Convert GRIB to netCDF meteorological data formats using this simple tool. All conversions are completely free of charge.">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166273767-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-166273767-1');
+    </script>
+
+    <title>Convert GRIB to NetCDF</title>
+    <link rel="icon" href="{% static 'blog/images/favicon.ico' %}" type="image/x-icon">
+
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-    {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}">
   </head>
 

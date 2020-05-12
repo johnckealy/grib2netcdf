@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "blog.apps.BlogConfig",
     "widget_tweaks",
+    'favicon',
 ]
 
 MIDDLEWARE = [
