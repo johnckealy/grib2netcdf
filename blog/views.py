@@ -7,6 +7,8 @@ import os
 from django.conf import settings
 
 
+def about(request):
+    return render(request, 'blog/about.html')
 
 
 def handle_input_file(f):
@@ -41,10 +43,13 @@ def sample_grib(request):
     return render(request, 'blog/grib_stats.html', {'grbs': sample_grbs, 'sample': True})
 
 
-def create_netcdf(request):
+def netcdf(request):
     if request.method == 'POST':
         NetCDF(request.POST)
+    return render(request, 'blog/netcdf.html')
+
+
+def serve_netcdf_file(request):
     fs = FileSystemStorage(TMP_DIR)
     response = FileResponse(fs.open('output.nc', 'rb'))
-
     return response

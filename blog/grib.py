@@ -81,8 +81,8 @@ class NetCDF:
     def __init__(self, post_object):
         self.post_object = post_object
         self.grbs_obj = self.read_grib()
-        self.lons = first(self.grbs_obj.all).get_latlons()[0]
-        self.lats = first(self.grbs_obj.all).get_latlons()[1]
+        self.lons = first(self.grbs_obj.all).get_latlons()[1]
+        self.lats = first(self.grbs_obj.all).get_latlons()[0]
         self.analDate = first(self.grbs_obj.all).get_timestamps()[0]
         self.validDate = first(self.grbs_obj.all).get_timestamps()[1]
         self.create_netcdf()

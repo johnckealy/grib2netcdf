@@ -2,7 +2,7 @@
 
 
 {% block content %}
-<div class="container-fluid">
+<div class="container">
 
   <div id="table-wrapper">
     <form class="" action="/netcdf" method="post">
@@ -10,7 +10,7 @@
       <input type="hidden" name="sample" value="{{ sample }}">
       <div class=table-header-submit>
         <h4> GRIB file <strong>{{ grbs.filename }}</strong>, valid <strong>{{ grbs.strvalidDate }}</strong> (t + <strong>{{ grbs.forecastTime }}</strong>)</h4>
-        <button type="submit" class="btn btn-primary" style="height: 50%;" name="netcdf">Create NetCDF file</button>
+        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#gribstatsModal" style="height: 50%;" name="netcdf">Create NetCDF file</button>
       </div>
       <div class="grib-card grib-card-header">
         <input type="checkbox" id="toggler" name="" value="" checked>
@@ -35,6 +35,29 @@
         {% endfor %}
         </div>
     </form>
+  </div>
+
+
+    <!-- Modal -->
+  <div class="modal fade" id="gribstatsModal" tabindex="-1" role="dialog" aria-labelledby="gribstatsModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="gribstatsModalLongTitle">Creating NetCDF</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>
