@@ -101,7 +101,7 @@ class NetCDF:
             return Grib(SAMPLE_FILE)
         else:
             print('generated id ############################   ', self._id_generator())
-            return Grib(TMP_DIR + 'destination{}.grb'.format(self._id_generator()))
+            return Grib(TMP_DIR + 'destination.grb')
 
     def create_netcdf(self):
         f = nc4.Dataset(TMP_DIR + 'output.nc', 'w', format='NETCDF4')
