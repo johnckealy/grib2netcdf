@@ -2,11 +2,9 @@
 
 *An online meteorological file conversion tool*
 
-I created grib2netcdf to address the difficulty I and other have felt with converting the Grib and the 
-NetCDF file formats (which should be an easy thing to do!).
+I created grib2netcdf to address the frustrations that myself and others in the atmospheric science community have felt with converting betweem the Grib and the NetCDF file formats (which should be an easy thing to do!).
 
-It's a simple tool, the user uploads a grib file, and the fields are parsed and displayed. You can select which fields you want, and
-then simply submit to create your netcdf file. 
+It's a simple tool, the user uploads a Grib file, and the fields are parsed and displayed. You can select which fields you want, and then simply submit to create your NetCDF file. 
 
 #### Grib? NetCDF? 
 
