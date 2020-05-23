@@ -8,7 +8,7 @@ from django.conf import settings
 
 
 def about(request):
-    return render(request, 'blog/about.html')
+    return render(request, 'gribhandler/about.html')
 
 
 def handle_input_file(f):
@@ -24,29 +24,29 @@ def upload_file(request):
             handle_input_file(request.FILES['file'])
             return redirect('/grib')
         else:
-            return render(request, 'blog/grib_stats.html', {'grbserror': "There was a problem validating your file."})
+            return render(request, 'gribhandler/grib_stats.html', {'grbserror': "There was a problem validating your file."})
     else:
         form = UploadFileForm()
-    return render(request, 'blog/index.html', {'form': form})
+    return render(request, 'gribhandler/index.html', {'form': form})
 
 
 def grib(request):
     try:
         grbs = Grib(TMP_DIR+'destination.grb')
-        return render(request, 'blog/grib_stats.html', {'grbs': grbs, 'sample': False})
+        return render(request, 'gribhandler/grib_stats.html', {'grbs': grbs, 'sample': False})
     except:
-        return render(request, 'blog/grib_stats.html', {'grbserror': "There was a problem with your file. Are you sure it's in GRIB2 format?"})
+        return render(request, 'gribhandler/grib_stats.html', {'grbserror': "There was a problem with your file. Are you sure it's in GRIB2 format?"})
 
 
 def sample_grib(request):
     sample_grbs = Grib(SAMPLE_FILE)
-    return render(request, 'blog/grib_stats.html', {'grbs': sample_grbs, 'sample': True})
+    return render(request, 'gribhandler/grib_stats.html', {'grbs': sample_grbs, 'sample': True})
 
 
 def netcdf(request):
     if request.method == 'POST':
         NetCDF(request.POST)
-    return render(request, 'blog/netcdf.html')
+    return render(request, 'gribhandler/netcdf.html')
 
 
 def serve_netcdf_file(request):

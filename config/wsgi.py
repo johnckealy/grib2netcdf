@@ -1,5 +1,5 @@
 """
-WSGI config for myblogorwhatever project.
+WSGI config for gribhandler project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

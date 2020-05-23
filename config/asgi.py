@@ -1,5 +1,5 @@
 """
-ASGI config for myblogorwhatever project.
+ASGI config for gribhandler project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
