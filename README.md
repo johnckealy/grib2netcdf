@@ -14,7 +14,7 @@ it almost certainly came from a Grib file (which was then processed by the weath
 Grib is lightweight and comprehensive, but sometimes it can be a little overwhelming. Another very common data format
 in meteorology is NetCDF. NetCDF is friendlier, and can be inspected at a glance using tools like `ncdump`. This makes
 NetCDF a common choice for many scientists. 
-
+ 
 #### Code
 
 Grib2NetCDF is written in Python's Django framework. 
