@@ -1,4 +1,4 @@
-# Grib 2 netcdf 
+# Grib 2 NetCDF 
 
 *An online meteorological file conversion tool*
 
