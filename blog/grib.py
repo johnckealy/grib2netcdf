@@ -14,9 +14,6 @@ SAMPLE_FILE = os.path.join(settings.BASE_DIR, '../GribFile')
 
 
 
-
-
-
 class GribField:
     def __init__(self, id, grb):
         self.gribfield_obj = grb

@@ -4,9 +4,13 @@
 {% block content %}
 
 <div id="about" class="container">
-  <div class="d-flex">
-    <h1 class="align-self-center">Grib2netCDF</h1>
-    <img id="temperature-img" src="{% static 'blog/images/temperature.jpg' %}" alt="">
+  <div class="row">
+    <div class="col-12 col-md-6 d-flex">
+      <h1 class="align-self-center">Grib2netCDF</h1>
+    </div>
+    <div class="col-12 col-md-6">
+      <img id="temperature-img" src="{% static 'blog/images/temperature.jpg' %}" alt="">
+    </div>
   </div>
   <p>
     Grib2netCDF is a simple tool developed to convert GRIB files to netCDF format. It's completely free to use. GRIB (<em>GRIdded Binary</em> or <em>General Regularly-distributed Information in Binary form</em>) is a file format commonly used for meteorological data, and is a World Meteorological Organization (WMO) standard. Simply drag and drop a GRIB2 format file, and click <span class="text-btn text-btn-grn" ><i class="fa fa-upload"></i> Upload</span>.
